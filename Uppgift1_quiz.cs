@@ -21,3 +21,9 @@ If-satser
 
 
 */
+
+
+
+string name = "Lilly";
+
+Console.WriteLine(name);
