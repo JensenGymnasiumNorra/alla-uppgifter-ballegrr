@@ -24,6 +24,69 @@ If-satser
 
 
 
-string name = "Lilly";
+using System.Net.Security;
+//Start
+Console.WriteLine("What is your name ?");
+string what_is_name = Console.ReadLine();
+Console.WriteLine($"Welcome, {what_is_name}.");
 
-Console.WriteLine(name);
+//Spel nivå
+Console.WriteLine("Today you will be playing a game, to which there are two levels. Choose: 1 - Easy, 2 - Difficult.");
+int difficulty = int.Parse(Console.ReadLine());
+
+// Frågor och svar för lätt nivå
+string[] easyQuestions = 
+{
+    "What is 2 + 2?",
+    "What color is the sky on a clear day?",
+    "How many legs does an avrage spider have?",
+    "What is Sweden's capital city?",
+    "What is the biggest animal in the world?"
+};
+string[] easyAnswers = { "4", "blue", "8", "stockholm", "blue whale" };
+
+// Frågor och svar för svår nivå
+string[] difficultQuestions = 
+{
+    "What is the square root of 144?",
+    "What year did the french revolution end?",
+    "Who was president of America year 1967?",
+    "What is the atomic mass of gold?",
+    "How many continents are there?"
+};
+string[] difficultAnswers = { "12", "1799", "Lyndon Baines Johnson", "196.97", "7" };
+
+
+string[] chosenQuestions;
+string[] chosenAnswers;
+
+if (difficulty == 1)
+{
+    chosenQuestions = easyQuestions;
+    chosenAnswers = easyAnswers;
+}
+else
+{
+    chosenQuestions = difficultQuestions;
+    chosenAnswers = difficultAnswers;
+}
+
+int points = 0;
+
+for (int i = 0; i < chosenQuestions.Length; i++)
+{
+    Console.WriteLine(chosenQuestions[i]); // Ställer frågan
+    string userAnswer = Console.ReadLine().ToLower(); // Läs in svar och konvertera till gemener
+
+    if (userAnswer == chosenAnswers[i].ToLower()) // Jämför oberoende av skiftläge
+    {
+        Console.WriteLine("That's right!");
+        points++;
+    }
+    else
+    {
+        Console.WriteLine("Wrong! Correct answer was: " + chosenAnswers[i]);
+    }
+}
+
+Console.WriteLine($"You got {points} of {chosenQuestions.Length} correct!");
